@@ -208,11 +208,12 @@ class TinyMCE extends Widget
         }
 
         if (empty($this->defaultValue) && $this->hasModel()) {
-            // $arr = $this->model->getAttributes([$this->attribute]);
-            // if (isset($arr[$this->attribute])) {
-            //     $this->defaultValue = $arr[$this->attribute];
-            // }
-            $this->defaultValue = $this->value;
+            $arr = $this->model->getAttributes([$this->attribute]);
+            if (isset($arr[$this->attribute])) {
+                $this->defaultValue = $arr[$this->attribute];
+            } else {
+                $this->defaultValue = $this->value;
+            }
         }
 
         parent::init();
